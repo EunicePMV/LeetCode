@@ -1,10 +1,15 @@
 class Solution:
     def maxWidthOfVerticalArea(self, points: List[List[int]]) -> int:
-        points.sort()
-        max_vertical = 0
-        for i in range(1, len(points)-1):
-            n = points[i][0] - points[i-1][0]
-            max_vertical = n if max_vertical < n else max_vertical
-        return max_vertical
+        x_axis = []
+        for point in points:
+            x_axis.append(point[0])
 
+        plot_points = sorted(x_axis)
+        wide_vertical = 0
+        for i, point in enumerate(plot_points):
+            if i != len(plot_points)-1:
+                n = plot_points[i+1] - point
+                if n > wide_vertical:
+                    wide_vertical = n
+        return wide_vertical
         
