@@ -5,7 +5,7 @@ class Solution:
         ans = 0
 
         # loop through first the array
-        for i in range(1, len(nums)+1):
-            if n % i == 0:
-                ans += nums[i-1] * nums[i-1]
+        for i in range(len(nums)):
+            if n % (i+1) == 0:
+                ans += nums[i]**2
         return ans 
