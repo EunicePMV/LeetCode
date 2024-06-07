@@ -1,14 +1,12 @@
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        # check the prev dest if the same continue, else return 
-        from_destination = set()
-        for destination in paths:
-            from_destination.add(destination[0])
+        # isolate from_city and to_city
+        to_city = set()
+        from_city = set()
+        for path in paths:
+            to_city.add(path[1])
+            from_city.add(path[0])
+        return (to_city - from_city).pop()
 
-        to_destination = set()
-        for destination in paths:
-            to_destination.add(destination[1])
+        # check each city in to_city if in from_city, if not return
 
-        for city in to_destination:
-            if city not in from_destination:
-                return city
